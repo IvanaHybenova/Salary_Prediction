@@ -731,9 +731,11 @@ class ModelContainer:
         target_df = data.validate_df[data.target_col]
         self.best_model_predict(feature_df)
         mse = mean_squared_error(target_df, self.predictions)
-        mae = mean_absolute_error(target_df, self.predictions)        
+        mae = mean_absolute_error(target_df, self.predictions) 
+        R_squared = r2_score(target_df, self.predictions)
         print('Best model MSE on validation test is: ', mse)
         print('Best model MAE on validation test is: ', mae)
+        print('Best model R^2 on validation test is: ', R_squared)
     
     def tune_best_model(self,data):
         """
@@ -812,7 +814,7 @@ class ModelContainer:
             #some models don't have feature_importances_
             return "Feature importances do not exist for given model"
 
-    def print_summary(self):
+    def print_summary(self, data):
         """
         Prints summary of models, best model, and feature importance.
 
