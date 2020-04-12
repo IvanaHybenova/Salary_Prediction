@@ -9,7 +9,7 @@ The company is currently using a simple model, which is average salary per indus
 The final product is expected to be a machine learning model delivered in a form, in which it can be both easily used to predict new   salaries but also can be easily maintained and retrained as the labour market changes and new data becomes available.  
 
 ### Dataset
-Dataset - __data.csv__ has 1 000 000 unique rows with 9 columns
+Dataset - __data.csv__ has 1 000 000 unique rows with 9 columns. Salary is in thousands dollars per year.
 
 ![image](https://user-images.githubusercontent.com/31499140/79072827-788abc80-7ce3-11ea-8f89-3ce8229b1d8f.png)
 
