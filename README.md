@@ -9,35 +9,50 @@ The company is currently using a simple model, which is average salary per indus
 The final product is expected to be a machine learning model delivered in a form, in which it can be both easily used to predict new   salaries but also can be easily maintained and retrained as the labour market changes and new data becomes available.  
 
 ### Dataset
-Dataset - __Mall_Customers.csv__ has 200 unique rows with 5 columns
+Dataset - __data.csv__ has 1 000 000 unique rows with 9 columns
 
-![image](https://user-images.githubusercontent.com/31499140/78266332-f261bf80-7505-11ea-98da-644fbaf9f188.png)
+![image](https://user-images.githubusercontent.com/31499140/79072827-788abc80-7ce3-11ea-8f89-3ce8229b1d8f.png)
 
-### Clustering
-The main part of the project is happening in __Customer_Segmentation.ipynb__. The dataset notebook is pre-set to work with the __Mall_Customers.csv__, but for production there is commented out part in cell with input parameters with details to download and save the data to a Postgresql database alongside with the model and standard scaler.
+### Exploration Data Analysis
+__Salary_predictions-EDA.ipynb__ contains data exploration. Findings and plots are part of the project presetion. Here is also established a base line, which is the mean salary by job type, degree and industry with  
+mean squared error of 743 and  
+mean absolute error of 22.
+
+The new model needs to take into account also miles from metropolis and years of experience.  
+Even though relationship between each of this numerical features and salary is linear,   
+I chose to go for algorithms that can model also non linear relationships such as tree-based models: Decision Trees, Random Forest and Gradient Boosted Trees.  
+The challenge is not in feature selection in this case, but in generating new features, to help the algorithms to see the patterns among categories.    
+For this I used summary statistics of each group, where groups will be created by jobType, degree and industry.  
+CompanyID was dropped as it doesn't imply and relationship with the target variable, and the model will be thisway generalized towards any company.  
+
+
+### Regression
+The modeling part of the project is happening in __Salary_predictions-MODELING.ipynb__. The dataset notebook is pre-set to work with the __data.csv__, but for production there is a commented out part in cell with input parameters with details to download and save the data to a Postgresql database alongside with the model, categorical variables encoders, selected features and generated features.  
 
 ### Deployment
-Nootebook __New_data_segments.ipynb__ is for assigning segments to new customers (if there are any) based on existing clusters. 
-Output of this notebook is table with both already segmented customers and new customers labeled accordingly.
+Nootebook __Salary_predictions-PREDICTING.ipynb__ is for predicting salaries of new jobs (if there are any) based on the train model.
+Output of this notebook is table with predicted salaries. As it is meant for production where new jobs will be added on regular bases,
+only jobs without predicted salary yet are scored and the ones that already have salaries predicted are not touched.  
 
-![image](https://user-images.githubusercontent.com/31499140/78268942-3b674300-7509-11ea-9910-4d8e051e2479.png)
+
+![image](https://user-images.githubusercontent.com/31499140/79073193-76c1f880-7ce5-11ea-9403-7fa924063199.png)
 
 
-It is pre-set to work with Mall_Customers-New.csv, but again there is commented out part of the code for downloading data, model and scaler from a PostgreSQL database.
+It is pre-set to work with __unseen_data.csv__, but there is again a commented out part of the code for downloading data from a PostgreSQL database.
 
-Alternatively it is possible to run __New_data_segments.py__ from the command line, passing path to the data, model and scaler.
-If the files are all in the same folder run it witht he command:
-__python New_data_segments.py Mall_customers-New.csv model.pkl scaler_mapper.pkl__
+Alternatively it is possible to run __Salary_predictions-PREDICTING.py__ from the command line, passing path to the data.
+If the file is in the current folder run it witht he command:
+__python Salary_predictions-PREDICTING.py unseen_data.csv
 
-File __customer_segments_DAG.py__ is for the deployment with Airflow server. It has task to execute the notebook New_data_segments.ipynb, that is scheduled to run every night.
+File __salary_predictions_DAG.py__ is for the deployment with Airflow server. It has task to execute the notebook Salary_predictions-PREDICTING.ipynb, that is scheduled to run every night.
 
-File __customer_segmentation_helper.py__ contains the 'data' class, which methods are used to do the clustering analysis and functions to assign segment to the new data.
+File __salary_predictions_helper.py__ contains all the classes and functions used in all three stages, EDA, modeling and predicting.
 
-The notebook has a snippet of code, that checks whether there are some new customers at all and stop the execution of the code, if there are not any.
+The notebook has a snippet of code, that checks whether there are any new jobs with missing salary at all and stop the execution of the code, if there are not any.
 
 ### Presentation 
-Project presentation is in the attached powerpoint presentation __Customer_Segmentation.pptx__, or you can view it as a markdown file __Customer_Segmentation.md__ - read accompanying text under each slide for full understanding :)
+Project presentation is in the attached powerpoint presentation __Salary_predictions-PRESENTATION.pptx__, or you can view it as a markdown file __Salary_predictions-PRESENTATION.md__ 
 
-File __Customer_Segmentation-Result.html__ is part of the presentation.
+
 
 
