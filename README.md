@@ -15,8 +15,8 @@ Dataset - __data.csv__ has 1 000 000 unique rows with 9 columns. Salary is in th
 
 ### Exploration Data Analysis
 __Salary_predictions-EDA.ipynb__ contains data exploration. Findings and plots are part of the project presetion. Here is also established a base line, which is the mean salary by job type, degree and industry with  
-mean squared error of 743 and  
-mean absolute error of 22.
+mean squared error of 743K and  
+mean absolute error of 22K.
 
 The new model needs to take into account also miles from metropolis and years of experience.  
 Even though relationship between each of this numerical features and salary is linear,   
