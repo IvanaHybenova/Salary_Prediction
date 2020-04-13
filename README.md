@@ -51,7 +51,7 @@ File __salary_predictions_helper.py__ contains all the classes and functions use
 The notebook has a snippet of code, that checks whether there are any new jobs with missing salary at all and stop the execution of the code, if there are not any.
 
 ### Presentation 
-Project presentation is in the attached powerpoint presentation __Salary_predictions-PRESENTATION.pptx__, or you can view it as a markdown file __Salary_predictions-PRESENTATION.md__ 
+Project presentation is in the attached powerpoint presentation __Salary_predictions-PRESENTATION.pptx__, or you can view it directly on github opening file __Salary_predictions-PRESENTATION.pdf__ 
 
 
 
