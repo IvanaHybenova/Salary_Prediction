@@ -2,7 +2,7 @@
 Repository holds end-to-end regression project, with solution for deployment using PostgreSQL database and Airflow. 
 
 ### Problem definition
-An HR company wants to provide a professional advice on salary for its customers. It turns out to be very a valuable information for   both the candidates, that are not sure how much money they should aim for in negotiation process and for companies that don't want to   offer too low salary for an open position, which could discaurage talented candidates, but on the other hand they don't want to overpay  them, as unnecessarily high salaries mean smaller budget for other companies expenses.  
+An HR company wants to provide a professional advice on salary for its customers. It turns out to be a very valuable information for   both the candidates, that are not sure how much money they should aim for in negotiation process and for companies that don't want to   offer too low salary for an open position, which could discaurage talented candidates, but on the other hand they don't want to overpay  them, as unnecessarily high salaries mean smaller budget for other companies expenses.  
 
 The company is currently using a simple model, which is average salary per industry and job type, degree and industry, but is looking   for a more accurate solution, as suggesting too low or too high salary for a job position is leading to either not satisfied employees   leaving their employer or not satisfied companies, that eventually finds out that they are paying too much. Result of both cases is   negative review of the HR company, which logically leads to less customers.  
 
